@@ -522,7 +522,7 @@ const Homepage = () => {
           <FlatList horizontal={true} data={Mensdata} renderItem={MensImage} />
 
         </View>
-        <View style={{backgroundColor:"white"}}>
+        <View style={{backgroundColor:"white",paddingBottom:30}}>
           <Text
             style={{
               color: '#3f684f',
@@ -540,7 +540,7 @@ const Homepage = () => {
             renderItem={Comments}
           />
         </View>
-        <View style={{backgroundColor: '#fffbe5', marginTop: 30,paddingHorizontal:30,paddingBottom:40}}>
+        <View style={{backgroundColor: '#fffbe5',paddingHorizontal:30,paddingBottom:40}}>
           <Text style={styles.text3}>
           Every Piece We Create Has a Tale to Tell,
  Waiting for you to make it your own!           </Text>
@@ -551,27 +551,27 @@ const Homepage = () => {
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <View>
               <View style={{flexDirection: 'row'}}>
-                <Icon name="cart" size={40} marginHorizontal={10} color="green"/>
-                <Text style={{color:"green",fontSize:15,width:100,fontWeight:900}}>Fast & FreeDelivery</Text>
+                <Icon name="truck-fast-outline" size={40} marginHorizontal={10} color="#3a6347"/>
+                <Text style={{color:"#3a6347",fontSize:15,width:130,fontWeight:500}}>Fast & Free Delivery</Text>
               </View>
 
               <View style={{flexDirection: 'row', marginTop: 10}}>
-                <Icon name="cart" size={40} marginHorizontal={10} color="green"/>
-                <Text style={{color:"green",fontSize:15,width:100,fontWeight:900}}>Certified
-Jewellery</Text>
+                <Icon name="hand-heart-outline" size={40} marginHorizontal={10} color="#3a6347"/>
+                <Text style={{color:"#3a6347",fontSize:15,width:130,fontWeight:500}}>Lifetime Product
+support</Text>
               </View>
             </View>
 
             <View>
               <View style={{flexDirection: 'row'}}>
-                <Icon name="cart" size={40} marginHorizontal={10} color="green"/>
-                <Text style={{color:"green",fontSize:15,width:130,fontWeight:900}}>Lifetime Product
-support</Text>
+                <Icon name="checkbox-marked-circle-outline" size={40} marginHorizontal={10} color="#3a6347"/>
+                <Text style={{color:"#3a6347",fontSize:15,width:100,fontWeight:500}}>Certified
+Jewellery</Text>
               </View>
 
               <View style={{flexDirection: 'row', marginTop: 10}}>
-                <Icon name="cart" size={40} marginHorizontal={10} color="green"/>
-                <Text style={{color:"green",fontSize:15,width:100,fontWeight:900}}>15 days easy
+                <Icon name="truck-check-outline" size={40} marginHorizontal={10} color="#3a6347"/>
+                <Text style={{color:"#3a6347",fontSize:15,width:100,fontWeight:500}}>15 days easy
 return Policy</Text>
               </View>
             </View>
@@ -619,11 +619,11 @@ marginTop:20,
   },
   text3: {
     fontFamily: 'Times New Roman',
-    fontWeight: '700',
+    fontWeight: '900',
     fontSize: 18,
     textAlign: 'center',
     marginTop: 20,
-    color: 'green',
+    color: '#3a6347',
     fontStyle:'italic'
   },
   carouselImage: {

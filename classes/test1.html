@@ -1,0 +1,544 @@
+@extends('theme.default')
+{!! Charts::styles() !!}
+@section('content')
+
+<div class="page-allert">
+    <div class="container-fluid">
+        <div class="container">
+            @if(Session::has('msgstatus'))
+            @if(Session::get('msgstatus') == 'Fail to Submit')
+            <div class="alert  mybgcolorRed-bold">
+                <a href="#" class="close" data-dismiss="alert" arial-lable="close">&times;</a>
+                {{Session::get('msgstatus')}}
+            </div>
+            @else
+            <div class="alert mybgcolorGreen-bold">
+                <a href="#" class="close" data-dismiss="alert" arial-lable="close">&times;</a>
+                {{Session::get('msgstatus')}}
+            </div>
+            @endif
+            @endif
+        </div>
+    </div>
+
+</div>
+
+
+<div class="page-heading">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row mar bg-card">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 heading-inner">
+                            <h2></h2>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 text-end">
+
+                            <a href="{{ route('arrestlist')}} ">
+                                <a class="btn btn-secondary btnprn">Print</a>
+                                <a href="{{ url('arrestlist') }}" class="btn btn-sidebar">Back</button>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="create-order">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="tableToPrint">
+
+
+
+                        <div style="text-align: center;">
+                            <img src="{{URL::asset('public/images/logo-right1.png') }}" alt="Logo" style="width:99px;">
+                        </div>
+                        <div style="text-align: center;">
+                            <b style="font-size:20px;">ARREST MEMO</b>
+
+                        </div>
+                        <div style="padding-top:40px;">
+
+                            <table style="width:100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>1</b></td>
+
+                                    <td style="border: 1px solid;padding-left:10px;width:20%"><b>Dist:{!!
+                                            $arrestdata->dist_name !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;width:20%"><b>PS:{!!
+                                            $arrestdata->ps_name !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;width:20%"><b>Year:{!!
+                                            $arrestdata->year_arrest !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;width:25%"><b>Fir No.{!!
+                                            $arrestdata->fir_no !!}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px"><b>Proceeding No:{!!
+                                            $arrestdata->proceeding_no !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>G.D No.{!! $arrestdata->gd_no
+                                            !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px" colspan="2"><b>Fir Date:</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>Alphabetic Code of
+                                            the accused (write A-1 to A-9 for the first 9 persons B-1 to B-10 and so
+                                            on</b></td>
+                                    <td style="border: 1px solid;padding-left:10px">A-1</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>2</b></td>
+
+                                    <td style="border: 1px solid;padding-left:10px"><b>Date, time, and
+                                            place of arrest/ surrender
+                                        </b></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>Date :{!!
+                                            $arrestdata->date_surrender !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>Time :{!!
+                                            $arrestdata->time_surrender !!}</b><span
+                                            style="padding:0px 30px;">Hours</span></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>G.D No.</b></td>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="2"><b>Place :{!!
+                                            $arrestdata->place_surrender !!} </b></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>PS :{!! $arrestdata->ps_surrender
+                                            !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>Dist:{!!
+                                            $arrestdata->dist_surrender !!} </b></td>
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>3</b></td>
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>Name of the Court (if
+                                            surrendered)</b></td>
+                                    <td style="border: 1px solid;padding-left:10px">Nil<b>{!! $arrestdata->name_court
+                                            !!}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>4</b></td>
+                                    <td style="border: 1px solid;padding-left:10px"><b>Acts and Sections </b></td>
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3">U/s<b>{!!
+                                            $arrestdata->act_section !!}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>5</b></td>
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>Arrested and
+                                            forwarded/Arrested and released on bail or PR bond/Arrested but released on
+                                            anticipatory bail
+                                            /Arrested and remanded to police custody
+                                            /surrendered in Court and bailed out/surrendered in Court and sent to
+                                            judicial custody/surrendered in Court and remanded to police custody)
+                                        </b></td>
+                                    <td style="border: 1px solid;padding-left:10px;vertical-align: top;">Arrested and
+                                        forwarded for judicial custody<b>{!! $arrestdata->arrested_forwarded !!}</b>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>6</b></td>
+                                    <td style="border: 1px solid;padding-left:10px" colspan="4"><b>Particulars of the
+                                            accused
+                                        </b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Name</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"> <b>{!!
+                                            $arrestdata->accused_name !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Alias</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->alias_name !!} </b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Fathers name</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->father_name !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Nationality</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->nationality !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Aadhar Card No.</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->aadhar_no !!} </b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Religion</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->religion !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Caste</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->caste !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Occupation</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->accused_occ !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Present address</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->present_address !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Permanent address</b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px" colspan="3"><b>{!!
+                                            $arrestdata->permanent_address !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>7</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;" colspan="2"><b>Injuries, cause of
+                                            injuries and physical condition of the accused person (indicate if medically
+                                            examined)
+                                        </b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px;vertical-align: top;" colspan="2">Nil
+                                        (medically examined before sending to remand) <b>{!! $arrestdata->injuried_accused !!}</b>
+                                    </td>
+                                   
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>8</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;" colspan="2"><b>The accused after
+                                            being informed of the grounds of arrest and his legal rights was duly taken
+                                            into custody on
+                                        </b></td>
+
+
+                                    <td style="border: 1px solid;padding-left:10px;vertical-align: top;" colspan="2">On
+                                        at …. hours<b>{!! $arrestdata->custody_on !!}</b></td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"><b>9</b></td>
+                                    <td style="border: 1px solid;padding-left:10px" colspan="4"><b>Physical features,
+                                            deformities and other details of the accused</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Sex:</b><b>{!!
+                                            $arrestdata->sex_accused !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>DOB:</b><b>{!!
+                                            $arrestdata->dob_accused !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Built:</b><b>{!!
+                                            $arrestdata->built_accused !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Height:</b><b>{!!
+                                            $arrestdata->height_accused !!}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Complexion :</b><b>{!!
+                                            $arrestdata->complextion !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Identification marks</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;" colspan="2"><b>1.</b><b>{!!
+                                            $arrestdata->idetifi_mole !!}</b><br><b>2.</b><b>{!!
+                                            $arrestdata->identifi_marks !!}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px;height:20px"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"></td>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+                                    <td style="border: 1px solid;padding-left:10px" colspan="4"><b>(for modus operandi
+                                            offences only)</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Deformity</b><b>{!!
+                                            $arrestdata->deformity !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Teeth</b><b>{!!
+                                            $arrestdata->teeth !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Hair</b><b>{!! $arrestdata->hair
+                                            !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Eyes</b><b>{!! $arrestdata->eye
+                                            !!}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid;text-align: center;width:4%"></td>
+
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Habits</b><b>{!!
+                                            $arrestdata->habits !!}</b></td>
+                                    <td style="border: 1px solid;padding-left:10px;"><b>Dress Habits</b><b>{!!
+                                            $arrestdata->dress_habit !!}</td>
+                                    <td style="border: 1px solid;padding-left:10px;"></td>
+                                    <td style="border: 1px solid;padding-left:10px;"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 20px">
+                                <span style=" margin-right: 10px;"><b>10.</b></span>
+                                <p style="margin: 0;"><b>Whether finger prints taken or not : </b><b>{!!
+                                        $arrestdata->finger_print !!}</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 20px">
+                                <span style=" margin-right: 10px;"><b>11.</b></span>
+                                <p style="margin: 0;"><b>Socio-economic profile of the accused </b><b></b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 50px">
+                                <span style=" margin-right: 10px;"><b>i.</b></span>
+                                <p style="margin: 0;"><b>Living Status : Living alone/living with family/living with
+                                        someone House/Hotel/Hostel/Kaccha house/Thatched house/slum/Homeless Harbourer
+                                        :</b><b>{!! $arrestdata->socio_ecnomic !!} </b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 50px">
+                                <span style=" margin-right: 4px;"><b>ii.</b></span>
+                                <p style="margin: 0; width:30%"><b>Educational qualification</b></p>
+                                <p style="margin: 0; width:60%"><b>:</b><b>{!! $arrestdata->education_qualification
+                                        !!}</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 50px">
+                                <span style=" margin-right: 0px;"><b>iii.</b></span>
+                                <p style="margin: 0;width:30%"><b>Occupation </b></p>
+                                <p style="margin: 0; width:60%"><b>:</b><b>{!! $arrestdata->occupation !!} </b></p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 50px">
+                                <span style=" margin-right: 2px;"><b>iv.</b></span>
+                                <p style="margin: 0;width:30%"><b>Income </b></p>
+                                <p style="margin: 0; width:60%"><b>:</b><b>{!! $arrestdata->income_group !!}</b></p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right:10px;"><b>a)</b></span>
+                                <p style="margin: 0;"><b>Lower income (below Rs.500/- p.m)</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right:10px;"><b>b)</b></span>
+                                <p style="margin: 0;"><b>Lower income (below Rs.500/- p.m)</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right:10px;"><b>c)</b></span>
+                                <p style="margin: 0;"><b>Middle (from Rs.1,001/- to Rs.2,000/-)</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right:10px;"><b>d)</b></span>
+                                <p style="margin: 0;"><b>Upper Middle income (from Rs2,001/- to Rs.3,000/- )</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right:10px;"><b>e)</b></span>
+                                <p style="margin: 0;"><b>Upper income (above Rs.3,000/-)</b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 20px">
+                                <span style=" margin-right: 10px;"><b>12.</b></span>
+                                <p style="margin: 0;"><b>
+                                        Whether the accused person as per the observation and known police records
+                                    </b></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 10px;"><b>a)</b></span>
+                                <p style="margin: 0;width:50%"><b>Is dangerous </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 10px;"><b>b)</b></span>
+                                <p style="margin: 0;width:50%"><b>Previously escaped on bail
+                                    </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 12px;"><b>c)</b></span>
+                                <p style="margin: 0;width:50%"><b>
+                                        Is generally armed
+                                    </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 11px;"><b>d)</b></span>
+                                <p style="margin: 0;width:50%"><b>Operates with accomplices </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 12px;"><b>e)</b></span>
+                                <p style="margin: 0;width:50%"><b>Has past criminal record
+                                    </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 14px;"><b>f)</b></span>
+                                <p style="margin: 0;width:50%"><b>Is recidivist </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 12px;"><b>g)</b></span>
+                                <p style="margin: 0;width:50%"><b>
+                                        Is likely to escape bail
+                                    </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 11px;"><b>h)</b></span>
+                                <p style="margin: 0;width:50%"><b>If released on bail likely to commit
+                                        crime or threaten witnesses/victim
+                                    </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex; align-items: flex-start;padding:10px 0px 0px 70px">
+                                <span style=" margin-right: 15px;"><b>i)</b></span>
+                                <p style="margin: 0;width:50%"><b>Is wanted in any other case
+                                        (If yes Cr.No & Sec of law)
+                                    </b></p>
+                                <p style="margin: 0; width:40%"><b>:</b><span style="padding:0px 30px ;">Yes/No</span>
+                                </p>
+
+
+                            </div>
+                            <div style="display: flex;padding:10px 0px 0px 20px">
+                                <span style=" margin-right: 10px;"><b>13.</b></span>
+                                <p style="margin: 0;"><b>
+                                        Name and address of the witnesses (atleast one witness is necessary)
+
+                                    </b></p>
+                            </div>
+                            <div style="padding:10px 0px 0px 20px">
+                                <p style="margin: 0;"><b>
+                                        Signature or LTI of accused person
+
+
+                                    </b></p>
+                            </div>
+                            <div style="width: 30%;margin-left: auto;padding-top:40px ">
+                                <p style="margin: 0;"><b>Signature of the Investigating Office </b></p>
+                                <p style="margin: 0;"><b>Name: </b></p>
+
+                                <p style="margin: 0;"><b>Rank: </b></p>
+
+                                <p style="margin: 0;"><b>Station: </b></p>
+
+
+                            </div>
+                            <div style="padding-top:20px ">
+                                <p style="margin: 0;"><b>Place: </b></p>
+
+                                <p style="margin: 0;padding-top:20px"><b>Name: </b></p>
+
+
+
+                            </div>
+
+                        </div>
+                        @endsection
